@@ -1,0 +1,22 @@
+name: kube-sdk
+version: 0.1.0
+
+authors:
+  - Holden Omans <holden.omans@gmail.com>
+
+targets:
+  kube-sdk:
+    main: src/bin/cli.cr
+
+crystal: 1.2.2
+
+license: MIT
+
+dependencies:
+  kube-client:
+    github: spoved/kube-client.cr
+    version: "~> 0.3.2"
+development_dependencies:
+  spectator:
+    gitlab: arctic-fox/spectator
+    version: ~> 0.10.1
