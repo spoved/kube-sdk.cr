@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.1.1">
+<meta name="crystal_docs.project_version" content="master">
+<meta name="crystal_docs.project_name" content="kube-sdk.cr">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="kube-sdk.cr">
+  <title>Kube::Builder - kube-sdk.cr master</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          kube-sdk.cr
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="kube-sdk.cr/Kube" data-name="kube">
+      <a href="../Kube.html">Kube</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="kube-sdk.cr/Kube/Builder" data-name="kube::builder">
+      <a href="../Kube/Builder.html">Builder</a>
+      
+    </li>
+  
+  <li class=" " data-id="kube-sdk.cr/Kube/Controller" data-name="kube::controller">
+      <a href="../Kube/Controller.html">Controller</a>
+      
+    </li>
+  
+  <li class=" " data-id="kube-sdk.cr/Kube/SDK" data-name="kube::sdk">
+      <a href="../Kube/SDK.html">SDK</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="kube-sdk.cr/Reconciler" data-name="reconciler">
+      <a href="../Reconciler.html">Reconciler</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">annotation</span> Kube::Builder
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Used to define your CRD generation</p>
+<pre><code class="language-crystal">@[<span class="t">Kube</span><span class="t">::</span><span class="t">Builder</span>(group: <span class="s">&quot;plex.spoved.io&quot;</span>, version: <span class="s">&quot;v1alpha1&quot;</span>, generate: <span class="n">true</span>)]
+<span class="k">module</span> <span class="t">V1alpha1</span>
+  @[<span class="t">Kube</span><span class="t">::</span><span class="t">Builder</span>(root: <span class="n">true</span>, subresource: <span class="t">Status</span>)]
+  @[<span class="t">Kube</span><span class="t">::</span><span class="t">Builder</span>(<span class="n">:printcolumn</span>, name: <span class="s">&quot;Created&quot;</span>, <span class="k">type</span>: <span class="t">Bool</span>, jsonpath: <span class="s">&quot;status.created&quot;</span>)]
+  @[<span class="t">Kube</span><span class="t">::</span><span class="t">Builder</span>(<span class="n">:printcolumn</span>, name: <span class="s">&quot;Healthy&quot;</span>, <span class="k">type</span>: <span class="t">Bool</span>, jsonpath: <span class="s">&quot;status.healthy&quot;</span>)]
+  <span class="k">class</span> <span class="t">MediaServer</span> <span class="o">&lt;</span> <span class="t">::</span><span class="t">K8S</span><span class="t">::</span><span class="t">Kubernetes</span><span class="t">::</span><span class="t">Resource</span>
+    property spec : <span class="t">Spec</span>
+
+    <span class="k">class</span> <span class="t">Spec</span>
+    <span class="k">end</span>
+
+    <span class="k">class</span> <span class="t">Status</span>
+      property created : <span class="t">Bool</span>
+      property healthy : <span class="t">Bool</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/spoved/kube-sdk.cr/blob/refs/heads/master/src/kube/builder.cr#L22" target="_blank">
+        kube/builder.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
