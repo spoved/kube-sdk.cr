@@ -1,6 +1,15 @@
-# TODO: Write documentation for `Kube::Sdk`
-module Kube::Sdk
-  VERSION = "0.1.0"
+{% begin %}
+  {% flag_provided = false %}
+  {% for ver in (11..23) %}
+    {% flag = :k8s_v1 + "." + "#{ver}" %}
+    {% if flag?(flag) %}
+      {% flag_provided = true %}
+      require "kube-client/v1.{{ver}}"
+    {% end %}
+  {% end %}
+  {% unless flag_provided %}
+    require "kube-client/v1.23"
+  {% end %}
+{% end %}
 
-  # TODO: Put your code here
-end
+require "./kube-sdk/*"
