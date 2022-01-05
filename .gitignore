@@ -3,3 +3,5 @@
 /bin/
 /.shards/
 *.dwarf
+/tmp/
+spec/files/kube_config_test.yml
