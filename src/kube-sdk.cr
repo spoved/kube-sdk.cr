@@ -20,6 +20,7 @@ module Kube; end
 
 require "spoved/logger"
 require "./kube-sdk/version"
+require "./ext/**"
 
 module Kube::SDK
   extend self
@@ -29,3 +30,4 @@ end
 Kube::SDK.logger.debug &.emit "Kube SDK Version", **Kube::SDK.version
 
 require "./kube-sdk/*"
+require "./kube/*"

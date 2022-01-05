@@ -17,7 +17,7 @@ jobs:
       - name: Install shards
         run: shards update --ignore-crystal-version
       - name: Build docs
-        run: crystal ./support/gen_docs.cr
+        run: crystal docs --project-name kube-sdk.cr --source-refname ${{ github.ref }}
       - name: Deploy docs
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
