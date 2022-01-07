@@ -3,6 +3,11 @@ require "yaml"
 
 # Common spec values for custom resource definitions
 module K8S::Types
+  @[::K8S::Properties(
+    name: {type: String, nilable: false, key: "name", required: true},
+    pull_policy: {type: String, nilable: true, key: "pull_policy"},
+    pull_secret: {type: String, nilable: true, key: "pull_secret"},
+  )]
   # ImageSpec defines parameters for docker image executed on Kubernetes
   class ImageSpec
     module Fields
@@ -54,6 +59,8 @@ module K8S::Types
     end
 
     include Fields
+
+    def initialize(@affinity = nil, @tolerations = nil, @node_selector = nil, @node_name = nil); end
   end
 
   # VolumeSpec contains the Volume Definition used for the pod.
@@ -103,6 +110,8 @@ module K8S::Types
     end
 
     include Fields
+
+    def initialize(@name = nil, @volume_source = nil, @persistent_volume_claim_spec = nil); end
   end
 
   # PodConfigurationSpec contains the configuration for the pods
@@ -131,5 +140,7 @@ module K8S::Types
     end
 
     include Fields
+
+    def initialize(@annotations = nil, @labels = nil, @scheduling = nil, @resources = nil); end
   end
 end
