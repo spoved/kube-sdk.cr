@@ -13,6 +13,6 @@ build: ## Build the binary
 	@shards build -Dk8s_${K8S_VERSION}
 
 docs: ## Generate docs
-	@crystal ./bin/gen_docs.cr
+	@crystal docs -Dk8s_${K8S_VERSION} --error-trace -s -p -t ./src/kube-sdk.cr ./lib/k8s/src/k8s.cr ./examples/plex-controller/crd.cr
 
 .PHONY: help spec build docs

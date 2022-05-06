@@ -1,7 +1,7 @@
 require "compiler/crystal/config"
 
 module Kube::SDK
-  VERSION = "0.1.0"
+  VERSION = {{ `shards version "#{__DIR__}"`.chomp.stringify }}
 
   def client_version
     Kube::Client::VERSION

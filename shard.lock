@@ -4,9 +4,13 @@ shards:
     git: https://github.com/mrrooijen/commander.git
     version: 0.4.0
 
+  crinja:
+    git: https://github.com/straight-shoota/crinja.git
+    version: 0.8.0
+
   db:
     git: https://github.com/crystal-lang/crystal-db.git
-    version: 0.10.1
+    version: 0.11.0
 
   hashdiff:
     git: https://github.com/spoved/hashdiff.cr.git
@@ -14,15 +18,19 @@ shards:
 
   k8s:
     git: https://github.com/spoved/k8s.cr.git
-    version: 0.0.5
+    version: 0.1.3
 
   kube-client:
     git: https://github.com/spoved/kube-client.cr.git
-    version: 0.3.2
+    version: 0.4.2
+
+  open-api:
+    git: https://github.com/spoved/open-api.cr.git
+    version: 0.2.9
 
   spectator:
     git: https://gitlab.com/arctic-fox/spectator.git
-    version: 0.10.3
+    version: 0.10.5
 
   spoved:
     git: https://github.com/spoved/spoved.cr.git

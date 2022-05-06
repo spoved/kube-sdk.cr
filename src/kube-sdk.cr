@@ -20,6 +20,7 @@ module Kube; end
 
 require "spoved/logger"
 require "./kube-sdk/version"
+require "open-api"
 require "./ext/**"
 
 module Kube::SDK

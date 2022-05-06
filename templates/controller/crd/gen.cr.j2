@@ -1,0 +1,15 @@
+require "file_utils"
+require "{{in_file}}"
+
+OUT_DIR = "{{out_dir}}"
+CRD_DIR = File.join(OUT_DIR, "config", "crd", "bases")
+FileUtils.mkdir_p(CRD_DIR)
+Dir.cd(CRD_DIR) do
+  defs = Kube::SDK::Controller::CRD.crd_defs
+  defs.items.each do |crd|
+    group = crd[:spec, :group]
+    name = crd[:spec, :names, :plural]
+    file_name = "#{group}_#{name}.yaml"
+    File.write(file_name, crd.to_yaml)
+  end
+end
