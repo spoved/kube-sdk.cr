@@ -34,5 +34,5 @@ shards:
 
   spoved:
     git: https://github.com/spoved/spoved.cr.git
-    version: 0.8.2
+    version: 0.8.4
 

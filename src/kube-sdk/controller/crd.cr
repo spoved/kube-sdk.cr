@@ -6,16 +6,21 @@ module Kube::SDK::Controller::CRD
   extend self
   extend Spoved::SystemCmd
 
-  GEN_CRD_TEMPLATE = {{read_file("#{__DIR__}/../../../templates/controller/crd/gen.cr.j2")}}
-
   # Will create a wrapper script to generate CRDs files.
   def generate_crds(**options)
-    script = Crinja.render(GEN_CRD_TEMPLATE, options)
+    logger.info { "Generating crd manifests..." }
+
+    script = Crinja.render({{read_file("#{__DIR__}/../../../templates/controller/crd/gen.cr.j2")}}, options)
     tempfile = File.tempfile("crd_gen", suffix: ".cr")
     begin
       File.write(tempfile.path, script)
       cmd = "cat #{tempfile.path} | crystal eval -Dk8s_v#{options[:k8s_ver]}"
-      system_cmd(cmd)
+      result = system_cmd(cmd)
+      if result[:status]
+        logger.info { "[OK] CRD manifests." }
+      else
+        logger.error { "[FAIL] CRD manifests." }
+      end
     ensure
       tempfile.delete
     end
